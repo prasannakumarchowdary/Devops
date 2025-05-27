@@ -1,0 +1,20 @@
+FROM ubuntu
+RUN apt update
+RUN apt install apache2 -y
+RUN apt install apache2-utils -y
+RUN apt clean
+COPY /sourcecode/ /var/www/html/
+EXPOSE 80
+ENTRYPOINT ["apache2ctl"]
+CMD ["-DFOREGROUND"]
+
+
+
+
+<h3>Welcome To Naresh IT !</h3>
+
+sudo docker build -t ramarao388/devopstestfile5:1.5 .
+sudo docker run -itd -p 9090:80 ramarao388/devopstestfile:1.0
+
+
+https://www.free-css.com/free-css-templates
