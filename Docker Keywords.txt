@@ -1,0 +1,25 @@
+
+To Write Dockerfile We will use below keywords:-
+-----------------------------------------------
+
+1) FROM -> is used to specify base image to create our docker image Ex: FROM Ubuntu
+
+2) MAINTAINER -> is used to specify author of Dockerfile EX: Prasanna prasanna@gmail.com
+
+3) RUN -> is used to specify instructions to execute when docker image is creating EX: RUN apt-get update -y
+
+4) COPY -> is used to copy the files from host machine to container EX: COPY python-app-py usr/app
+
+5) WORKDIR ->is used to specify working directory location to process for the docker file instructions EX:WORKDIR /usr/app
+
+6) EXPOSE -> is used to specify on which port number our container will run EX: EXPOSE 8080
+
+7) ENTRYPOINT -> is used to run our pplication code in docker container EX: ENTRYPOINT ["python"app-py"]
+
+8) USER -> is used to specify the user account to execute docker file instructions EX: USER root
+
+9) ARG -> is used to pass dynamic value EX: ARG branch-name
+
+10) VOLUME -> is used to specify Docker volume for storing the data EX: VOLUME msql-db-data
+
+11) CMD -> is used to specify instructions to execute when docker container is creating EX: CHD docker run -it ubuntu
