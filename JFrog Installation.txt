@@ -1,0 +1,85 @@
+JFrog - Artifactory Tool
+#########################
+
+Pre-Requisites:
+----------------
+1) Jenkins Server (Ubuntu T2-Medium)
+2) Maven Installation
+3) JAVA or HTML Code 
+4) GITHUB Account
+5) JFrog Server(Amazon Linux T2-Medium)
+
+
+JFrog Installation & Configuration:
+-----------------------------------
+1)Create Amazon Linux (t2.medium) Server
+2)cd /opt
+3)Search "Download JFrog OSS" => use 1st Url => Click on "Get Code Source" ==> 7.68.20/   25-Jan-2024 10:57 => right click and open new tab and copy link address for Linux Version
+4)wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.68.20/jfrog-artifactory-oss-7.68.20-linux.tar.gz
+
+5)tar -xvf <tar file>
+
+6)chown -R ec2-user:ec2-user artifactory-oss-7.68.20   ==> To Change Owner
+
+7)cd /opt/artifactory-oss-7.68.20/app/bin
+
+8)./artifactory.sh start
+
+9)Add Ports 8081 and 8082 in Security Group or Enable ALL-TCP
+
+10)<public ip>:8081
+
+11) 
+user name: admin
+password: password
+
+12) Skip -> Skip -> Create Repositorys "Select Maven"  -> Next -> Finish
+
+13) Click on 1st Tab(Artifacts) => Expand Artifactory => Click on Artifacts
+
+14)
+     1)Install "Artifactory" Plugin
+     2)Create Job => Select Maven Project => ok
+     3)Manage Jenkins -> System -> Goto "JFrog" Section -> Click on "Add JFrog Platform Instance"
+     4) Mention a unique "Instance ID" 
+     Ex: Jfrog-Artifactory
+     5)JFrog Platform URL: http://<public IP of JFrog Instance>:8081
+     6)Provide credentials added in JFrog under: Default Deployer Credentials
+	 7)Click on "Test Connection"
+	 8)Apply & Save
+15) 
+        1)Create a new job of type: Maven Project
+		2)Add your github details
+		3)Goto "Environment" section:
+			select: Resolve artifacts from Artifactory
+				Resolution releases repository:   libs-release
+				Resolution snapshots repository:   libs-snapshot
+		4)Goto Build:
+				Goals and options: clean install
+
+		5)Post-build Actions -> Select "Deploy artifacts to Artifactory"
+		
+				Target releases repository:   libs-release-local
+				Target snapshot repository:   libs-snapshot-local
+		
+		6)Apply & Save
+
+----------------------------
+
+<version>0.0.2-SNAPSHOT</version> => Creates a snapshot version inside our :
+libs-snapshot-local => 0.0.2-SNAPSHOT (Folder name)
+
+<version>0.0.3-SNAPSHOT</version> => Creates a snapshot version inside our :
+libs-snapshot-local => 0.0.3-SNAPSHOT (Folder name)
+
+<version>1.0</version> => Creates a release version inside our :
+libs-release-local => 1.0 (Folder name)
+
+<version>2.0</version> => Creates a release version inside our :
+libs-release-local => 2.0 (Folder name)
+
+
+
+
+
+Jfrogadmin@12345
