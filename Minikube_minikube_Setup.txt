@@ -1,0 +1,38 @@
+Prerequisites to Setup Minikube:
+================================
+ubuntu 22.04 LTS  with T2-Medium   CPU 2  RAM 4GB 
+ALLTCP-Security Group
+
+Commands : 
+============
+sudo apt-get update -y
+sudo apt-get upgrade -y 
+sudo apt-get install curl 
+sudo apt-get install apt-transport-https
+sudo apt-get install conntrack
+
+Install docker: 
+===================
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+ls -l var/run/docker.sock
+sudo usermod -aG docker $USER && newgrp docker 
+
+Minikube:
+====================
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod +x /usr/local/bin/minikube
+minikube version 
+
+Kubectl: 
+===========
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo mv kubectl /usr/local/bin/kubectl
+sudo chmod +x /usr/local/bin/kubectl
+kubectl version --client
+
+minikube start
+kubectl cluster-info
+
+=======================================================================================================================
