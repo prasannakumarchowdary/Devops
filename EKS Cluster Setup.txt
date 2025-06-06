@@ -1,0 +1,27 @@
+EKS Cluster Setup:
+------------------
+Pre-Requisites:
+
+1) Management Server with t2.micro
+2) Cluster(t2.medium Servers)
+
+Helm: Package manager
+-----
+Helm is a tool that helps you to manage kubernetes applications with charts
+EX: In Linux yum & apt-get
+
+ Prometheus:
+------------
+Prometheus is an open-Source systems monitoring and alerting tool kit that collects and stores time series data of numeric metrics.
+
+Grafana:
+-------
+It is a tool for creating and managing dashboards, alerts, reports, and other alarms.
+
+ConfigMaps:
+----------
+ConfigMap is an API object used to store non-confidential data in key-value pairs. PODs can consume Confighaps as environment variables.
+
+Secrets:
+-------
+A Secret is an object that contain a small amount of sensitive data such as passwords, tokens & keys.
